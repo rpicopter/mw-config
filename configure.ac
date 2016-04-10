@@ -1,5 +1,5 @@
 AC_INIT([mw-config],[0.0.1],[gregory.dymarek@gmail.com])
-AM_INIT_AUTOMAKE([1.9 foreign])
+AM_INIT_AUTOMAKE([1.9 foreign subdir-objects])
 
 LT_INIT
 

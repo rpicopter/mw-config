@@ -89,17 +89,17 @@ session_start();
     var proxy_port = 8888;
 
     function reboot_host() {
+    	$("#info").text("Rebooting..."); //the ajax call never returns 
 	    $.ajax({
 	      url: 'save.php',
 	      type: 'post',
 	      data: {'action': 'reboot'},
 	      success: function(data, status) {
-	      	$("#info").text("Reboot started...");
+	      	
 	      },
 	      error: function(xhr, desc, err) {
 	        console.log(xhr);
 	        console.log("Details: " + desc + "\nError:" + err);
-	        $("#info").text("Reboot started...");
 	      }
 	    }); // end ajax call	    	
     }
@@ -181,7 +181,7 @@ session_start();
 	});
 
 	function _error() {
-		console.log("error",arguments);
+		mw_communication_failed();
 	}
 
 	function _received() {
