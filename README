@@ -1,14 +1,22 @@
 MultiWii configurator
+This contains set of scripts and a website that allows user to manage MultiWii services.
+It is supposed to be installed on the target board. It has been tested on RPi with Raspbian.
 
 Requirements:
-- local http server with php support (i.e. nginx)
+- local http server with php support (i.e. apache, nginx)
 
 Installation:
 - make & sudo make install
 - copy www folder into your http folder
-
-Running:
 - execute mw-config-start.sh (you might want to run it on every boot i.e. using rc.local)
 
-This will start all services that are defined in $(sysconfdir)/mw (i.e. /usr/local/etc/mw)
+Running:
+- open a web browser and navigate
 
+mw-config-start
+This is a script that starts all services that are defined in $(sysconfdir)/mw (i.e. /usr/local/etc/mw)
+
+
+
+TODO:
+- MultiWii configurator & flasher
