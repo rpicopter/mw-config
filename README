@@ -1,37 +1,3 @@
-TODO:
-for each project - edit makefile to create /etc/mw/*start file
-for ps3 - alter .sh script not to have loop 
-for mw - remove .sh script
-
-Wrapper script for always-on execution:
-- arg: etc mw file
-- runs the command from the mw file in the loop (should re-read the file every time)
-
-Start script:
-starts all processes from /etc/mw/*.start using the wrapper in the background
-
-Config:
-1 file per service
-
-Status screen (welcome screen)
-(goes over *.start), first line description, 2nd, command, 3rd args
-- mw service state (Restart) (extra params)
-- mw-proxy state (Restart) (extra params)
-- mw-mavlink state (Restart) (extra params)
-- mw-ps3 state
-
-- mw communication status (requires mw service and mw proxy to be running) 
-	- issues status request
-	- waits 1 sec for response 
-
-Restart=Kill
-
-On load:
-- gets list of file and creates array of objects (name, descritpion, args)
-- generates UI with buttons
-- mw comm status
-
-
 MultiWii configurator
 
 Requirements:
