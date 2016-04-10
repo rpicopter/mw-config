@@ -90,6 +90,7 @@ session_start();
 
     function reboot_host() {
     	$("#info").text("Rebooting..."); //the ajax call never returns 
+    	$('#info').show();
 	    $.ajax({
 	      url: 'save.php',
 	      type: 'post',
