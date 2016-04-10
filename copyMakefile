@@ -1,0 +1,8 @@
+install:
+	mkdir -p /etc/mw/
+	cp -r etc_mw/* /etc/mw/
+	chmod 666 /etc/mw/*
+	cp scripts/mw-config-kill.sh /usr/local/bin/
+	chmod u+s /usr/local/bin/mw-config-kill.sh
+	cp scripts/mw-config-start.sh /usr/local/bin/
+	cp scripts/mw-config-wrapper.sh /usr/local/bin/
