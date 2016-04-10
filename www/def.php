@@ -5,19 +5,19 @@ $cfg_path='/usr/local/etc/mw/';
 function getServiceDescription($f) {
 	global $cfg_path;
 	$lines = file($cfg_path.$f);
-	return $lines[0];
+	return trim($lines[0]);
 }
 
 function getServiceName($f) {
 	global $cfg_path;
 	$lines = file($cfg_path.$f);
-	return $lines[1];
+	return trim($lines[1]);
 }
 
 function getServiceArgs($f) {
 	global $cfg_path;
 	$lines = file($cfg_path.$f);
-	return $lines[2];
+	return trim($lines[2]);
 }
 
 function getServicePID($f) {

@@ -37,14 +37,14 @@ session_start();
 	$f = basename($value);
 	$name = getServiceName($f);
 
-  	echo '<div class="row" style="height:40px">';
+  	echo '<div id="'.$name.'" class="row" style="height:40px">';
   	echo '<div class="col-sm-3 text-right">';
     echo '<span class="top" title="'.getServiceDescription($f).'">'.$name.'</span>';
     echo '</div>';
   	echo '<div class="col-sm-1 text-center">';
   	$status = getServiceStatus($f);
-  	if ($status==0) echo '<span class="top glyphicon glyphicon-remove" title="Off"/>';
-  	else echo '<span class="top glyphicon glyphicon-ok" title="Running"/>';
+  	if ($status==0) echo '<span data-service="'.$name.'" data-status="0" class="top glyphicon glyphicon-remove" title="Off"/>';
+  	else echo '<span data-service="'.$name.'" data-status="1" class="top glyphicon glyphicon-ok" title="Running"/>';
     echo '</div>';    
   	echo '<div class="col-sm-2 text-center">';
     echo '<button name="restart" data-index="'.$key.'" data-service="'.$f.'" type="button" class="btn btn btn-success btn-xs">Restart <span class="glyphicon glyphicon-refresh"/></button>';
@@ -65,9 +65,12 @@ session_start();
 </div>
 </div>
 <hr/>
-<button name="reboot" type="button" class="btn btn btn-success btn-xs">Reboot <span class="glyphicon glyphicon-off"/></button>
+
 <div id="info" class="alert alert-info" style="display: none;"></div>
 <div id="danger" class="alert alert-danger" style="display: none;"></div>
+<div id="warning" class="alert alert-warning" style="display: none;white-space:pre-wrap;"></div>
+
+<button name="reboot" type="button" class="btn btn btn-success btn-xs">Reboot <span class="glyphicon glyphicon-off"/></button>
 </div>
 </div>
 
@@ -143,6 +146,8 @@ session_start();
     	var tooltip = "Updated: "+get_time();
     	$("#mwstatus").attr('data-original-title',tooltip);
 
+    	$("#mwstatus").attr('status','1');
+
     	counter = 5; //sec for status to change
     }
 
@@ -152,6 +157,47 @@ session_start();
     	
     	var tooltip = "Updated: "+get_time();
     	$("#mwstatus").attr('data-original-title',tooltip);
+
+    	$("#mwstatus").attr('status','0');
+
+    	if (installation_ok && ws_connection) {
+	       	$("#warning").text("Unable to communicate with MultiWii board.\nPlease check the wiring to your MultiWii board, the UART port configuration and ensure your have compiled & flashed successfully the MultiWii board");
+			$('#warning').show();    		
+    	}
+    }
+
+    function check_installation() {
+		var service = $("#mw");
+		if (service.length==0) {
+	       	$("#warning").text("It looks like MultiWii service has not been installed. Please install mw-service package and re-try.");
+			$('#warning').show();
+			return -1;		
+		}
+
+		service = $("span[data-service='mw']");
+		if (service[0].dataset.status==0) {
+	       	$("#warning").text("MultiWii service is not running.\nCheck the logs in /tmp folder.\nYou might also want to run it manually to check for any errors.");
+			$('#warning').show();
+			return -1;				
+		}
+
+		service = $("#mw-ws");
+		if (service.length==0) {
+	       	$("#warning").text("It looks like MultiWii WebSocket service has not been installed.\nPlease install mw-www (mw-ws) package.");
+			$('#warning').show();
+			//setTimeout(function(){$('#warning').hide();},4000);	
+			return -1;		
+		}
+
+		service = $("span[data-service='mw-ws']");
+		if (service[0].dataset.status==0) {
+	       	$("#warning").text("MultiWii WebSocket service is not running.\nCheck the logs in /tmp folder.\nYou might also want to run it manually to check for any errors.");
+			$('#warning').show();
+			return -1;		
+		}
+
+
+		return 0;
     }
 
     //the ready function requests a status from mw, configured the UI to show/hide pages and once finished runs on_ready
@@ -160,6 +206,11 @@ session_start();
 		$(".top").tooltip({
 			placement: "top"
 		});
+
+
+		installation_ok = !check_installation();
+		ws_connection = 0;
+
 
 		$("button[name='restart']").click(
     		function(e) { 
@@ -182,6 +233,11 @@ session_start();
 	});
 
 	function _error() {
+		if (installation_ok) {
+	    	$("#warning").text("Unable to connect to MultiWii WebSocket service.\nCheck any firewalls you might have.\nEnsure it is accessible on "+proxy_ip+":"+proxy_port);
+			$('#warning').show();
+		}
+
 		mw_communication_failed();
 	}
 
@@ -204,7 +260,7 @@ session_start();
 		ws.send( msg );
 
 		setInterval(update,1000); //keep sending the requests every second
-		
+		ws_connection = 1;
 	}
 
 	function update() {
