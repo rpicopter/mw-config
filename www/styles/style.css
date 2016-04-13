@@ -6,4 +6,24 @@ body {
   text-align: center;
 }
 
+.config-text-area{
+	font-family: monospace;
+	white-space: nowrap;
+	overflow: auto;
+}
 
+.compile-text-area{
+	font-family: monospace;
+	white-space: nowrap;
+	overflow: auto;
+}
+
+.flash-text-area{
+	font-family: monospace;
+	white-space: nowrap;
+	overflow: auto;
+}
+
+.fill { 
+
+}

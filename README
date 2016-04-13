@@ -4,6 +4,7 @@ It is supposed to be installed on the target board. It has been tested on RPi wi
 
 Requirements:
 - local http server with php support (i.e. apache, nginx)
+- PHP 5.2.0 or greater
 
 Installation:
 - make & sudo make install

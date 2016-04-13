@@ -1,6 +1,27 @@
 <?php
 
+$mw_download_url = 'https://github.com/multiwii/multiwii-firmware/archive/upstream_shared.zip';
+$mw_sources_path = '/tmp/';
+$mw_extract_folder = 'multiwii-firmware-upstream_shared';
+
+$arudino_mk_file = '/usr/share/arduino/Arduino.mk'; //(https://github.com/sudar/Arduino-Makefile)
+$arduino_cpu = '16000000L'; //see Arduino-Makefile 
+$arduino_board = 'atmega328'; //see Arduino-Makefile 
+
+$avrdude_part = 'm328p'; //as per avrdude.config (part id) (https://github.com/kcuzner/avrdude)
+$spidev_path = '/dev/spidev0.0';
+
+
+
+
 $cfg_path='/usr/local/etc/mw/';
+
+$status_page = 'index.php';
+$status_name = 'Status';
+$programmer_page = 'flasher.php';
+$programmer_name = 'MultiWii flasher';
+$help_page = 'help.php';
+$help_name = 'Help';
 
 function getServiceDescription($f) {
 	global $cfg_path;
