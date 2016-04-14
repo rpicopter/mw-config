@@ -30,7 +30,9 @@ session_start();
 ...
 <hr/>
 <h3>Wiring</h3>
-<a href="img/wiring.png" data-lightbox="wiring"><img src="img/wiring.png" width="50%"/></a>
+<div style="text-align: center;">
+	<a href="img/wiring.png" data-lightbox="wiring"><img src="img/wiring.png" width="50%"/></a>
+</div>
 <hr/>
 </div>
 </div>
