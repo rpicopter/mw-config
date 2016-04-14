@@ -19,19 +19,19 @@ session_start();
 ?>
 
 <div class="container">
-<div class="starter-template">
-<p class="lead">
-	Help
-</p>
-
+<div class="starter-template help-content">
+<h2>Help</h2>
 <hr/>
-<p>Intoduction</p>
+<h3>Introduction</h3>
 <p>Status shows information of currently installed MultiWii services as well as shows connection status to MultiWii board</p>
 <p>MultiWii flasher can be used to download, compile and flash MultiWii controller onto your board.</p>
-<p>Requirements</p>
-<p>Wiring</p>
+<hr/>
+<h3>Requirements</h3>
+...
+<hr/>
+<h3>Wiring</h3>
 <a href="img/wiring.png" data-lightbox="wiring"><img src="img/wiring.png" width="50%"/></a>
-
+<hr/>
 </div>
 </div>
 
