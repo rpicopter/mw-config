@@ -155,15 +155,25 @@ if($_POST['action'] == "compileMW") {
 		);
 }
 
+function br2nl($string)
+{
+    return preg_replace('/\<br(\s*)?\/?\>/i', "\n", $string);
+}
+
 if($_POST['action'] == "loadMWConfig") {
 	$ret = 1; //assume it is fine
 
 	$config = file_get_contents($mw_sources_path.$mw_extract_folder."/config.h");
 	if ($config === FALSE) $ret = 0;
+	else {
+		//$config = preg_replace("/\r\n|\r|\n/",'',$config);	
+		//$config = nl2br($config);
+		//$config = br2nl($config);
+	}
 
 	$ret = array(
 			'status' => $ret,
-			'config' => ($config)
+			'config' => $config
 		);
 }
 
@@ -233,6 +243,24 @@ if($_POST['action'] == "reboot") {
 	rebootHost();
 	$ret = array(
 			'status' => $ret
+		);
+}
+
+if($_POST['action'] == "getLog") {
+	$ret = 1;
+	$name = $_POST['name'];
+
+	$log_file = $mw_sources_path."/".$name.".log";
+	$log = file_get_contents($log_file);
+
+	if ($log===FALSE) {
+		$ret = 0;
+		$log = "Error loading ".$log_file;
+	}
+
+	$ret = array(
+			'status' => $ret,
+			'log' => $log
 		);
 }
 

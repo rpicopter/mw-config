@@ -6,21 +6,28 @@ body {
   text-align: center;
 }
 
+.log {
+	font-family: monospace;
+	white-space: pre;
+	overflow: auto;
+	max-height: 300px;
+}
+
 .config-text-area{
 	font-family: monospace;
-	white-space: nowrap;
+	white-space: pre;
 	overflow: auto;
 }
 
 .compile-text-area{
 	font-family: monospace;
-	white-space: nowrap;
+	white-space: pre;
 	overflow: auto;
 }
 
 .flash-text-area{
 	font-family: monospace;
-	white-space: nowrap;
+	white-space: pre;
 	overflow: auto;
 }
 

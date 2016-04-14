@@ -18,7 +18,6 @@ session_start();
 ?>
 
 
-
 <div class="container">
 <div class="starter-template">
 
@@ -41,7 +40,7 @@ session_start();
 </p>
 
 <div id="config_form" class="container" style="display: none;">
-	<textarea class="form-control config-text-area" id="config"></textarea>
+	<textarea class="form-control config-text-area" wrap="off" id="config"></textarea>
 	<div style="margin-top:20px; margin-bottom:20px;">
 		<button id="config_save" type="button" class="btn btn btn-success btn-xs">Save &amp; compile <span class="glyphicon glyphicon-play"/></button>
 		<button id="config_reset" type="button" class="btn btn btn-success btn-xs">Reset <span class="glyphicon glyphicon-repeat"/></button>
@@ -49,7 +48,7 @@ session_start();
 </div>
 
 <div id="compile_form" class="container" style="display: none;">
-	<textarea class="form-control compile-text-area" id="compile_log"></textarea>
+	<textarea class="form-control compile-text-area" id="compile_log" wrap="off" ></textarea>
 	<div style="margin-top:20px; margin-bottom:20px">
 		<button id="compile_back" type="button" class="btn btn btn-success btn-xs">Go back <span class="glyphicon glyphicon-arrow-left"/></button>
 		<button id="compile_flash" type="button" class="btn btn btn-success btn-xs">Flash <span class="glyphicon glyphicon-play"/></button>
@@ -58,7 +57,7 @@ session_start();
 </div>
 
 <div id="flash_form" class="container" style="display: none;">
-	<textarea class="form-control flash-text-area" id="flash_log"></textarea>
+	<textarea class="form-control flash-text-area" id="flash_log" wrap="off" ></textarea>
 	<div style="margin-top:20px; margin-bottom:20px">
 		<button id="flash_retry" type="button" class="btn btn btn-success btn-xs">Retry <span class="glyphicon glyphicon-repeat"/></button>
 	</div>
@@ -273,6 +272,7 @@ session_start();
 		$(".top").tooltip({
 			placement: "top"
 		});
+		
 
 		$("#config_reset").on("click",stage2);
 		$("#config_save").on("click",stage3);
