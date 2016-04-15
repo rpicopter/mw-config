@@ -10,11 +10,11 @@ This project aims to simplify and extend the functionality of MultiWii by provid
 
 All of this is achieved through the use of a driver (mw-service) that it designed to run on a auxilarly *nix SoC board like Beagleboard, Raspbery Pi, Odroid, etc (the SoC has to be running an *nix OS)
 
-                                                                                          -----------------
- ----------                  ----------                     Link                         |  QGroundControl |
-| MultiWii |  ----uart----  |    SoC   |   - - - - - - Wifi/Bluetooth/etc - - - - - - -  |   Web browser   |
- ----------                  ----------                                                  |    cmd / ps3    |
-                                                                                          -----------------
+                                                                                      -----------------
+ ----------                  ----------                     Link                     |  QGroundControl |
+| MultiWii |  ---uart---  |    SoC   |   - - - - -  Wifi/Bluetooth/etc - - - - - -   |   Web browser   |
+ ----------                  ----------                                              |    cmd / ps3    |
+                                                                                      -----------------
 
 To make the full use of the functionality it requires the multirotor to carry 2 boards - MW & SoC.
 
