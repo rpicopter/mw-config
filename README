@@ -1,11 +1,22 @@
 MultiWii configurator
-This contains set of scripts and a website that allows user to manage MultiWii services.
-It is supposed to be installed on the target board. It has been tested on RPi with Raspbian.
+
+This is a *nix package (part of mw-*nix)  that allows users to:
+- configure, compile and flash MultiWii through webbrowser
+- monitor other MultiWii *nix services like mavlink
+
+It contains set of scripts and a website that should be installed on a host board (running *nix) which is connect to MultiWii board (i.e. Arduino).
+
+      HOST BOARD -----uart----- AVR
+      
+To use the automatic flashing functionality the host board requires to be interfaced with avr over spi.
+
+See: https://raw.githubusercontent.com/rpicopter/mw-config/master/www/img/wiring.png
 
 Requirements:
-- local http server with php support (i.e. apache, nginx)
-- PHP 5.2.0 or greater
-- build tools (autotools, libtool, automake, ...)
+- *nix board with uart interface (i.e. Raspberry Pi / Beagleboard) 
+- local http server (i.e. apache, nginx) with PHP 5.2.0 or greater
+- build tools (autotools, libtool, automake, arduino-mk, binutils-avr, gcc-avr, avr-libc)
+- for automatic flashing: spi interface and avrdude package
 
 Installation:
 - ./autogen.sh
@@ -14,12 +25,8 @@ Installation:
 - execute mw-config-start.sh (you might want to run it on every boot i.e. using rc.local)
 
 Running:
-- open a web browser and navigate
+- open a web browser and navigate to help screen for further instructions
 
 mw-config-start
 This is a script that starts all services that are defined in $(sysconfdir)/mw (i.e. /usr/local/etc/mw)
 
-
-
-TODO:
-- MultiWii configurator & flasher
