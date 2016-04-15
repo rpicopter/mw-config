@@ -1,32 +1,55 @@
 MultiWii configurator
 
-This is a *nix package (part of mw-*nix)  that allows users to:
+Introduction
+==============
+MultiWii is a open-source software to control multirotors. It is designed to run on 8bit boards like Arduino. When configured, compiled and flashed it turns the board into a flight-controller.
+
+mw-*nix
+==============
+This project aims to simplify and extend the functionality of MultiWii by providing set of packages such as mw-mavlink (that makes MultiWii mavlink capable so you can use i.e. QGroundControl), mw-ws (that allows user to monitor and control MultiWii through a web-browser), mw-ps3 (to fly MultiWii using a PS3 controller), mw-cli (to control it from a command line), or mw-config (to configure, compile and flash MultiWii without the use of any additional programmers).
+
+All of this is achieved through the use of a driver (mw-service) that it designed to run on a auxilarly *nix SoC board like Beagleboard, Raspbery Pi, Odroid, etc (the SoC has to be running an *nix OS)
+                                                                                          -----------------
+ ----------                  ----------                     Link                         |  QGroundControl |
+| MultiWii |  ----uart----  |    SoC   |   - - - - - - Wifi/Bluetooth/etc - - - - - - -  |   Web browser   |
+ ----------                  ----------                                                  |    cmd / ps3    |
+                                                                                          -----------------
+
+To make the full use of the functionality it requires the multirotor to carry 2 boards - MW & SoC.
+
+
+mw-config
+==============
+This is a *nix package (part of mw-*nix) that allows users to:
 - configure, compile and flash MultiWii through webbrowser
 - monitor other MultiWii *nix services like mavlink
 
 It contains set of scripts and a website that should be installed on a host board (running *nix) which is connect to MultiWii board (i.e. Arduino).
-
-      HOST BOARD -----uart----- AVR
       
 To use the automatic flashing functionality the host board requires to be interfaced with avr over spi.
 
-See: https://raw.githubusercontent.com/rpicopter/mw-config/master/www/img/wiring.png
-
-Requirements:
+Requirements
+==============
 - *nix board with uart interface (i.e. Raspberry Pi / Beagleboard) 
 - local http server (i.e. apache, nginx) with PHP 5.2.0 or greater
 - build tools (autotools, libtool, automake, arduino-mk, binutils-avr, gcc-avr, avr-libc)
 - for automatic flashing: spi interface and avrdude package
 
-Installation:
+See: https://raw.githubusercontent.com/rpicopter/mw-config/master/www/img/wiring.png
+
+Installation
+==============
 - ./autogen.sh
 - make & sudo make install
 - copy www folder into your http folder (you can rename it to something like mwconfig)
 - execute mw-config-start.sh (you might want to run it on every boot i.e. using rc.local)
 
-Running:
+Running
+==============
 - open a web browser and navigate to help screen for further instructions
 
+Other notes
+==============
 mw-config-start
 This is a script that starts all services that are defined in $(sysconfdir)/mw (i.e. /usr/local/etc/mw)
 
