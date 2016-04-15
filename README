@@ -9,6 +9,7 @@ mw-*nix
 This project aims to simplify and extend the functionality of MultiWii by providing set of packages such as mw-mavlink (that makes MultiWii mavlink capable so you can use i.e. QGroundControl), mw-ws (that allows user to monitor and control MultiWii through a web-browser), mw-ps3 (to fly MultiWii using a PS3 controller), mw-cli (to control it from a command line), or mw-config (to configure, compile and flash MultiWii without the use of any additional programmers).
 
 All of this is achieved through the use of a driver (mw-service) that it designed to run on a auxilarly *nix SoC board like Beagleboard, Raspbery Pi, Odroid, etc (the SoC has to be running an *nix OS)
+
                                                                                           -----------------
  ----------                  ----------                     Link                         |  QGroundControl |
 | MultiWii |  ----uart----  |    SoC   |   - - - - - - Wifi/Bluetooth/etc - - - - - - -  |   Web browser   |
