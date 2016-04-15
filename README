@@ -8,7 +8,7 @@ mw-*nix
 ==============
 This project aims to simplify and extend the functionality of MultiWii by providing set of packages such as mw-mavlink (that makes MultiWii mavlink capable so you can use i.e. QGroundControl), mw-ws (that allows user to monitor and control MultiWii through a web-browser), mw-ps3 (to fly MultiWii using a PS3 controller), mw-cli (to control it from a command line), or mw-config (to configure, compile and flash MultiWii without the use of any additional programmers).
 
-All of this is achieved through the use of a driver (mw-service) that it designed to run on a auxilarly *nix SoC board like Beagleboard, Raspbery Pi, Odroid, etc (the SoC has to be running an *nix OS)
+All of this is achieved through the use of a driver (mw-service) that it designed to run on a auxiliary *nix SoC board like Beagleboard, Raspbery Pi, Odroid, etc (the SoC has to be running an *nix OS)
 
                                                                                      -----------------
  ----------                ----------                     Link                      |  QGroundControl |
@@ -25,9 +25,8 @@ This is a *nix package (part of mw-*nix) that allows users to:
 - configure, compile and flash MultiWii through webbrowser
 - monitor other MultiWii *nix services like mavlink
 
-It contains set of scripts and a website that should be installed on a host board (running *nix) which is connect to MultiWii board (i.e. Arduino).
-      
-To use the automatic flashing functionality the host board requires to be interfaced with avr over spi.
+It contains set of scripts and a website to be installed on the host board (running *nix).
+
 
 Requirements
 ==============
@@ -35,6 +34,8 @@ Requirements
 - local http server (i.e. apache, nginx) with PHP 5.2.0 or greater
 - build tools (autotools, libtool, automake, arduino-mk, binutils-avr, gcc-avr, avr-libc)
 - for automatic flashing: spi interface and avrdude package
+
+To use the automatic flashing functionality the host board requires to be interfaced with avr over spi.
 
 See: https://raw.githubusercontent.com/rpicopter/mw-config/master/www/img/wiring.png
 
@@ -47,7 +48,7 @@ Installation
 
 Running
 ==============
-- open a web browser and navigate to help screen for further instructions
+- open a web browser and navigate to help screen for further instructions if needed
 
 Other notes
 ==============
