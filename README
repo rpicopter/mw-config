@@ -43,7 +43,7 @@ Installation
 ==============
 - ./autogen.sh
 - make & sudo make install
-- copy www folder into your http folder (you can rename it to something like mwconfig)
+- copy www folder into your http folder (suggest to rename it to 'config')
 - execute mw-config-start.sh (you might want to run it on every boot i.e. using rc.local)
 
 Running
